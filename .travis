@@ -1,9 +1,20 @@
-sudo: required
-
-language: C
+language: python
+python:
+  - "2.7"
+  - "3.5"
+  - "3.6"
+  - "3.7-dev"
 
 services:
   - docker
 
-before_install:
-- docker build -t antonweb0561/zabbixproj
+install:
+  - sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  - sudo chmod +x /usr/local/bin/docker-compose
+  - pip install ansible zabbix-api
+  - sudo docker-compose up -d
+  - ansible-playbook zabbix_startup_check.yml
+  - sh set_zabbix_locale.sh
+
+script:
+  - ansible-playbook test_zabbix_group.yml
