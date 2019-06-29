@@ -11,4 +11,4 @@ services:
   - docker
 
 before_install:
-- docker build -t antonweb0561/zabbixproj
+- docker build -t antonweb0561/zabbixproj .
