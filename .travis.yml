@@ -8,4 +8,4 @@ services:
 before_install:
 - docker build -t zabbixsql .
 - docker images
-- doker login -u anton0561 -p bynthcntkkfh
+- docker login -u anton0561 -p bynthcntkkfh
