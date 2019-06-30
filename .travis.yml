@@ -11,7 +11,7 @@ env:
 before_install:
 - docker build -t zabbixsql .
 - docker images
-- docker login -u anton0561 -p bynthcntkkfh
+- docker login -u anton0561 -p "$(PASSWORD)"
 #- docker tag $(DOCKER_IMAGE_NAME) anton0561/$(DOCKER_IMAGE_NAME):LATEST
 - docker tag zabbixsql anton0561/zabbixsql
 - docker push anton0561/zabbixsql
