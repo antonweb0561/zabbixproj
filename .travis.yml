@@ -4,8 +4,14 @@ language: shell
 
 services:
   - docker
+  
+env:
+#- DOCKER_IMAGE_NAME=zabbixsql
 
 before_install:
 - docker build -t zabbixsql .
 - docker images
 - docker login -u anton0561 -p bynthcntkkfh
+#- docker tag $(DOCKER_IMAGE_NAME) anton0561/$(DOCKER_IMAGE_NAME):LATEST
+- docker tag zabbixsql anton0561/zabbixsql
+- docker push anton0561/zabbixsql
