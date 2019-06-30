@@ -1,6 +1,6 @@
 sudo: required
 
-language: php
+language: shell
 #python:
 #  - "2.7"
 #  - "3.5"
@@ -11,4 +11,9 @@ services:
   - docker
 
 before_install:
-- docker build -t antonweb0561/zabbixproj .
+- docker build -t zabbix .
+- docker images
+- docker run --name zabbix-appliance -t \
+      -p 10051:10051 \
+      -p 80:80 \
+      -d zabbix
